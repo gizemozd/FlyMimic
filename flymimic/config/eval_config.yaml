@@ -1,0 +1,23 @@
+# Default config for evaluation
+defaults:
+  - _self_
+
+# Paths
+model_path: "../logs/demo_model.zip"
+videos_dir: "../results/videos"
+figures_dir: "../results/figures"
+data_dir: "../results/rollout_data"
+
+# Run settings
+play: false
+record_video: true
+rollout_steps: 210
+camera_id: 0
+fps: 30
+render_every_n_steps: 1
+use_viewer: false
+show_plot: false
+headless: true  # set true on a server without display
+
+# Model XML selection override (normally auto)
+xml_name: null

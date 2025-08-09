@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "FlyMimic"
+version = "0.1.0"
+description = "FlyMimic: An imitation learning environment for musculoskeletal modeling of Drosophila melanogaster"
+authors = [{name = "Pembe Gizem Ozdil", email = "pgizemozdil@gmail.com"}]
+license = {text = "Apache-2.0"}
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["musculoskeletal", "biomechanics", "mujoco", "imitation learning", "drosophila", "muscle modeling"]
+dependencies = [
+  "stable-baselines3",
+  "dm_control==1.0.30",
+  "mujoco==3.3.2",
+  "lxml",
+  "tensorboard",
+  "hydra-core",
+  "numpy",
+  "torch"
+]
+
+[project.urls]
+Repository = "https://github.com/gizemozd/FlyMimic"
+
+
+[project.optional-dependencies]
+viz = ["matplotlib", "imageio", "imageio-ffmpeg"]
+dev = ["black", "pytest"]
+
+[tool.setuptools]
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["tests*", "docs*", "scripts*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["flymimic"]

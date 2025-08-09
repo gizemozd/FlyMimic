@@ -1,0 +1,22 @@
+# Armature only
+seed: 0
+load_model: null
+tot_ts: 30000000
+xml_name: best_combined_arm_cvt3
+log_file_name: null
+exp: arm
+
+policy:
+  activation_fn: "torch.nn.ReLU"
+
+train:
+  learning_rate: 1e-5
+  verbose: 0
+  n_steps: 2048
+  batch_size: 64
+  n_epochs: 10
+
+callbacks:
+  eval_freq: 5000
+  n_eval_episodes: 20
+  save_freq: 1000000
