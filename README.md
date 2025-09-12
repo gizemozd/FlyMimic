@@ -43,13 +43,13 @@ pip install -e .
 (Optional) To install the optional dependencies for visualization, run:
 
 ```bash
-pip install -e .[viz]
+pip install -e ".[viz]"
 ```
 
 To install the development dependencies, run:
 
 ```bash
-pip install -e .[dev]
+pip install -e ".[dev]"
 ```
 
 ## Quick Start
@@ -64,17 +64,19 @@ python scripts/eval_rollout.py
 
 ## Training
 
-To train a model with custom configuration:
+To train a model with a custom configuration:
 ```bash
 python scripts/train_muscle.py --config-name=train_arm
 ```
 
 ## Evaluation
-```bash
+
 To evaluate a trained model:
 ```bash
-python scripts/eval_rollout.py model_path=./logs/best_muscle_seed_arm_0_v3/demo_model.zip
+python scripts/eval_rollout.py model_path=./logs/demo_model.zip
 ```
+
+> **_NOTE:_** You can download the other trained models from [here](https://www.dropbox.com/scl/fi/ci4u7cvruikzsifbtra8v/logs.zip?rlkey=3surtpetvj48jvqyaa0m21stq&st=raxl8594&dl=0).
 
 ## Repository Structure
 ```plaintext
