@@ -20,7 +20,8 @@ This repository hosts:
 - Imitation learning training with PPO [Stable Baselines3](https://github.com/DLR-RM/stable-baselines3)
 
 
-> **_NOTE:_** This repository focuses on imitation learning experiments and provides MuJoCo models converted from OpenSim. For the original muscle model development and parameter optimization in OpenSim, please refer to [this repository](https://github.com/gizemozd/neuromechfly-muscles).
+> [!NOTE] 
+> This repository focuses on imitation learning experiments and provides MuJoCo models converted from OpenSim. For the original muscle model development and parameter optimization in OpenSim, please refer to [this repository](https://github.com/gizemozd/neuromechfly-muscles).
 
 -----
 
@@ -76,7 +77,8 @@ To evaluate a trained model:
 python scripts/eval_rollout.py model_path=./logs/demo_model.zip
 ```
 
-> **_NOTE:_** You can download the other trained models from [here](https://www.dropbox.com/scl/fi/ci4u7cvruikzsifbtra8v/logs.zip?rlkey=3surtpetvj48jvqyaa0m21stq&st=raxl8594&dl=0).
+> [!NOTE]
+> You can download the other trained models from [here](https://www.dropbox.com/scl/fi/ci4u7cvruikzsifbtra8v/logs.zip?rlkey=3surtpetvj48jvqyaa0m21stq&st=raxl8594&dl=0).
 
 ## Repository Structure
 ```plaintext
