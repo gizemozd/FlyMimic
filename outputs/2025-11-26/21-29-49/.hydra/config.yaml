@@ -1,0 +1,14 @@
+model_path: ./logs/model_sda.zip
+videos_dir: ../results/videos
+figures_dir: ../results/figures
+data_dir: ../results/rollout_data
+play: false
+record_video: true
+rollout_steps: 210
+camera_id: 0
+fps: 30
+render_every_n_steps: 1
+use_viewer: false
+show_plot: false
+headless: true
+xml_name: null
