@@ -478,14 +478,7 @@ def main():
                     q = data.qpos[q_idx]
                     dq = data.qvel[v_idx]
 
-                    if jname.startswith("joint_RFTibia") or jname.startswith("joint_RFTrochanter") or jname == "joint_RFTibia_pitch":
-                        kp_used = 600.0
-                        kd_used = 2.5
-                    else:
-                        kp_used = KP
-                        kd_used = KD
-
-                    tau = kp_used * (q_des - q) - kd_used * dq
+                    tau = KP * (q_des - q) - KD * dq
                     data.qfrc_applied[v_idx] += tau
 
                 act_idx = offset // FRAMES_PER_ACT
