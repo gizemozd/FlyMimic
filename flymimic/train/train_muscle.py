@@ -4,16 +4,33 @@ from datetime import datetime
 from pathlib import Path
 from types import SimpleNamespace
 
+import torch
+import wandb
 from stable_baselines3 import PPO
 from stable_baselines3.common.callbacks import (
+    BaseCallback,
     CallbackList,
     CheckpointCallback,
     EvalCallback,
 )
 from stable_baselines3.common.monitor import Monitor
+from wandb.integration.sb3 import WandbCallback
 
 from flymimic.envs.dmcontrol_wrapper import DMControlGymWrapper
 from flymimic.tasks.fly.mocap_tracking_muscle import mocap_tracking_muscle
+
+
+class EpisodeRewardCallback(BaseCallback):
+    """Log per-episode reward to WandB during training rollouts."""
+
+    def _on_step(self) -> bool:
+        for info in self.locals.get("infos", []):
+            if "episode" in info:
+                wandb.log(
+                    {"train/episode_reward": info["episode"]["r"]},
+                    step=self.num_timesteps,
+                )
+        return True
 
 
 def _to_namespace(obj):
@@ -58,6 +75,29 @@ def train(cfg):
         activation_fn=activation,
     )
 
+    # WandB
+    wandb_cfg = getattr(cfg, "wandb", None)
+    run_name = cfg.log_file_name or f"muscle_{cfg.exp}_seed{seed}_{timestamp}"
+    wandb.init(
+        project=wandb_cfg.project if wandb_cfg else "flymimic",
+        entity=wandb_cfg.entity if wandb_cfg and wandb_cfg.entity != "null" else None,
+        tags=list(wandb_cfg.tags) if wandb_cfg and hasattr(wandb_cfg, "tags") else ["muscle"],
+        name=run_name,
+        config={
+            "model": "muscle",
+            "xml_name": cfg.xml_name,
+            "exp": cfg.exp,
+            "seed": seed,
+            "tot_ts": cfg.tot_ts,
+            "learning_rate": cfg.train.learning_rate,
+            "n_steps": cfg.train.n_steps,
+            "batch_size": cfg.train.batch_size,
+            "n_epochs": cfg.train.n_epochs,
+            "activation_fn": cfg.policy.activation_fn,
+        },
+        sync_tensorboard=True,
+    )
+
     # Model creation or loading
     if cfg.load_model:
         print(f"Loading model from {cfg.load_model}")
@@ -98,7 +138,11 @@ def train(cfg):
         save_path=str(ckpt_dir),
         name_prefix=f"ppo_mocap_agent_muscle_seed_{cfg.exp}_{seed}_{timestamp}",
     )
-    callbacks = CallbackList([eval_callback, checkpoint_callback])
+    wandb_callback = WandbCallback(verbose=0)
+    episode_reward_callback = EpisodeRewardCallback()
+    callbacks = CallbackList(
+        [eval_callback, checkpoint_callback, wandb_callback, episode_reward_callback]
+    )
 
     # Training
     model.learn(
@@ -110,3 +154,4 @@ def train(cfg):
 
     # Save final model
     model.save(str(logs_dir / log_file_name))
+    wandb.finish()

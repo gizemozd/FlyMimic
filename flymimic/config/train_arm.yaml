@@ -20,3 +20,8 @@ callbacks:
   eval_freq: 5000
   n_eval_episodes: 20
   save_freq: 1000000
+
+wandb:
+  project: flymimic
+  entity: null
+  tags: ["muscle"]

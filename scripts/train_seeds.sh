@@ -9,7 +9,14 @@ CONFIGS=(
   train_arm_stiff
 )
 
-export TRAIN_SCRIPT="train_muscle.py"
+# Set to "muscle" or "torque" (default: muscle)
+MODE="${1:-muscle}"
+
+if [ "$MODE" = "torque" ]; then
+  export TRAIN_SCRIPT="train_torque.py"
+else
+  export TRAIN_SCRIPT="train_muscle.py"
+fi
 
 # Build the list of commands
 for SEED in "${SEEDS[@]}"; do

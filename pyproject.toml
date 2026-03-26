@@ -19,7 +19,8 @@ dependencies = [
   "tensorboard",
   "hydra-core",
   "numpy",
-  "torch"
+  "torch",
+  "wandb"
 ]
 
 [project.urls]
