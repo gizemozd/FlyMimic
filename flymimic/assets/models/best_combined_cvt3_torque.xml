@@ -6,15 +6,10 @@
   <visual>
     <scale framelength="0.5" framewidth="0.01"/>
   </visual>
-  <statistic meansize="0.298677" extent="5.78307" center="-0.79295 0.00627929 2.89153"/>
   <default class="main">
-    <joint limited="true" armature="0.0005" damping="0.01"/>
+    <joint limited="true" armature="0.0005" stiffness="0.4" damping="0.02"/>
     <geom margin="0.001" rgba="0.8 0.6 0.4 1"/>
     <site size="0.001 0.005 0.005"/>
-    <tendon limited="false" width="0.01" rgba="0.0 0.0 0.95 1"/>
-    <default class="muscle">
-      <general ctrllimited="true" ctrlrange="0 1" dyntype="muscle" gaintype="muscle" biastype="muscle" dynprm="0.01 0.04 0 0 0 0 0 0 0 0" gainprm="0.75 1.05 -1 200 0.5 1.6 1.5 1.3 1.2 0" biasprm="0.75 1.05 -1 200 0.5 1.6 1.5 1.3 1.2 0"/>
-    </default>
     <default class="motor">
       <general gainprm="5 0 0 0 0 0 0 0 0 0"/>
     </default>
@@ -168,54 +163,26 @@
       </body>
       <body name="LFCoxa" pos="-0.1306 0.1995 -0.2305">
         <inertial pos="0.00455966 -0.0113278 -0.215003" quat="0.707107 0 0 0.707107" mass="9.73852e-06" diaginertia="1.82938e-07 1.82146e-07 3.66796e-08"/>
-        <joint name="joint_LFCoxa_yaw" pos="0 0 0" axis="1 0 0" limited="false" range="-0.597 0.2745" ref="0.0"/>
-        <joint name="joint_LFCoxa_pitch" pos="0 0 0" axis="0 1 0" limited="false" range="-0.5783 0.7375" ref="0.0"/>
-        <joint name="joint_LFCoxa_roll" pos="0 0 0" axis="0 0 1" range="0.1436 0.6236" ref="0.0"/>
+        <joint name="joint_LFCoxa_yaw" pos="0 0 0" axis="1 0 0" limited="false" range="-0.597 0.2745" springref="-0.11"/>
+        <joint name="joint_LFCoxa_pitch" pos="0 0 0" axis="0 1 0" limited="false" range="-0.5783 0.7375" springref="0.35"/>
+        <joint name="joint_LFCoxa_roll" pos="0 0 0" axis="0 0 1" range="0.1436 0.6236" springref="0.5"/>
         <geom name="LFCoxa_geom" type="mesh" rgba="0.670588 0.509804 0.196078 0.4" mesh="LFCoxa_geom_LFCoxa"/>
-        <site name="LFC_tergopleural_promotor_a_LFC_Miller28a_p396" pos="0.0245106 -0.0407481 0.0471896"/>
-        <site name="LFC_tergopleural_promotor_b_LFC_Miller28b_p396" pos="0.0143019 -0.0150923 0.00156441"/>
-        <site name="LFC_pleural_remotor_and_abductor_LFC_Miller29_p296" pos="-0.0146505 0.0607293 -0.00146763"/>
-        <site name="LFC_pleural_promotor_LFC_Miller30_p296" pos="0.0237058 -0.0286361 -0.0128408"/>
-        <site name="LFC_sternal_anterior_rotator_LFC_Miller31_p296" pos="-0.000252024 -0.0417953 -0.0781376"/>
-        <site name="LFC_sternal_posterior_rotator_LFC_Miller32_p296" pos="-0.0235126 0.0447151 -0.0653978"/>
-        <site name="LFC_sternal_adductor_LFC_Miller33_p296" pos="0.0171012 -0.0661154 -0.10726"/>
-        <site name="LFF_trochanter_flexor_b_lff_thco_flexb_p1" pos="0.0170207 -0.0595734 -0.149676"/>
-        <site name="LFF_trochanter_flexor_b_lff_thco_flexb_p222" pos="0.00538458 -0.000688346 -0.323979"/>
-        <site name="LFF_sterno-tergo-trochanter_extensor_a_lff_thco_stta_p1" pos="-0.0259722 0.0507932 -0.138759"/>
-        <site name="LFF_sterno-tergo-trochanter_extensor_a_lff_thco_stta_p222" pos="-0.0352248 0.0126312 -0.373938"/>
-        <site name="LFF_sterno-tergo-trochanter_extensor_b_LFF_sterno-tergo-trochanter_extensor_b_p1" pos="-0.0208632 -0.0709668 -0.178621"/>
-        <site name="LFF_sterno-tergo-trochanter_extensor_b_LFF_sterno-tergo-trochanter_extensor_b_p222" pos="-0.0389383 -0.00938934 -0.362884"/>
-        <site name="LFF_accesory_trochanter_flexor_LFF_roll_f_p1" pos="-0.0193081 0.0479785 -0.207105"/>
-        <site name="LFF_trochanter_extensor_LFF_roll_e_p1" pos="-0.0381487 0.0404632 -0.339836"/>
-        <site name="LFF_trochanter_flexor_a_LFF_flexa_p1" pos="0.0311254 0.014358 -0.0559144"/>
         <site name="m_coxa_marker" pos="0 0 0" size="0.01" group="4" rgba="1 0.1 0.5 0.5"/>
         <body name="LFTrochanter" pos="-0.002 0.015 -0.4402">
           <inertial pos="-0.0136337 0.0341937 -0.0160004" quat="0.707107 0.707107 0 0" mass="1.70307e-06" diaginertia="4.86831e-09 4.75181e-09 3.4135e-09"/>
-          <joint name="joint_LFTrochanter_yaw" pos="0 0 0" axis="1 0 0" limited="false" range="-1.196 0.2745" ref="0.0"/>
-          <joint name="joint_LFTrochanter_pitch" pos="0 0 0" axis="0 1 0" limited="false" range="-3.242 -1.217" ref="0.0"/>
-          <joint name="joint_LFTrochanter_roll" pos="0 0 0" axis="0 0 1" limited="false" range="-0.2745 1.384" ref="0.0"/>
+          <joint name="joint_LFTrochanter_yaw" pos="0 0 0" axis="1 0 0" limited="false" range="-1.196 0.2745" springref="-0.1"/>
+          <joint name="joint_LFTrochanter_pitch" pos="0 0 0" axis="0 1 0" limited="false" range="-3.242 -1.217" springref="-2.8"/>
+          <joint name="joint_LFTrochanter_roll" pos="0 0 0" axis="0 0 1" limited="false" range="-0.2745 1.384" springref="0"/>
           <geom name="LFTrochanter_geom" type="mesh" rgba="0.55 0.392 0.118 0.4" mesh="LFTrochanter_geom_LFTrochanter"/>
-          <site name="LFF_trochanter_flexor_b_lff_thco_flexb_p322" pos="-0.0170405 -0.00472335 -0.0228887"/>
-          <site name="LFF_sterno-tergo-trochanter_extensor_a_lff_thco_stta_p322" pos="0.0222687 -0.00812877 0.0211095"/>
-          <site name="LFF_sterno-tergo-trochanter_extensor_b_LFF_sterno-tergo-trochanter_extensor_b_p322" pos="0.00657561 -0.0279958 0.0341395"/>
-          <site name="LFF_accesory_trochanter_flexor_LFF_roll_f_p222" pos="-0.00549219 -0.0199954 -0.0253338"/>
-          <site name="LFF_trochanter_extensor_LFF_roll_e_p222" pos="0.0102047 0.013626 0.00768368"/>
-          <site name="LFF_trochanter_flexor_a_LFF_flexa_p222" pos="-0.0121828 -0.0117695 -0.0403746"/>
           <site name="m_trochanter_marker" pos="0 0 0" size="0.01" group="4" rgba="1 0.1 0.5 0.5"/>
           <body name="LFFemur" pos="-0.01994 0.07244 -0.06238">
             <inertial pos="-0.00581711 0.0635589 -0.27996" mass="1.2483e-05" diaginertia="4.1473e-07 4.01495e-07 4.64816e-08"/>
             <geom name="LFFemur_geom" type="mesh" rgba="0.67 0.51 0.196 0.4" mesh="LFFemur_geom_LFFemur"/>
-            <site name="LFTibia_flex_93434_bifemlh_r-P1" pos="-0.0415201 0.0475376 -0.0877767"/>
-            <site name="LFTibia_flex_93434_bifemlh_r-P2" pos="-0.0151968 0.110902 -0.546627"/>
-            <site name="LFTibia_extensor_93932_bifemlh_r-P1" pos="0.0276828 0.0384591 -0.0895311"/>
-            <site name="LFTibia_extensor_93932_bifemlh_r-P2" pos="0.0267536 0.105256 -0.597078"/>
             <site name="m_femur_marker" pos="0 0 0" size="0.01" group="4" rgba="1 0.1 0.5 0.5"/>
             <body name="LFTibia" pos="-0.01982 0.1003 -0.5661">
               <inertial pos="0.0289105 -0.00239717 -0.245561" quat="0.707107 0 0 0.707107" mass="4.51507e-06" diaginertia="1.24763e-07 1.24206e-07 6.26811e-09"/>
-              <joint name="joint_LFTibia_pitch" pos="0 0 0" axis="0 1 0" range="0.4789 2.502" ref="0"/>
+              <joint name="joint_LFTibia_pitch" pos="0 0 0" axis="0 1 0" range="0.4789 2.502" springref="2"/>
               <geom name="LFTibia_geom" type="mesh" rgba="0.67 0.51 0.196 1" mesh="LFTibia_geom_LFTibia"/>
-              <site name="LFTibia_flex_93434_pp21995" pos="-0.0108694 0.0114727 -0.0107331"/>
-              <site name="LFTibia_extensor_93932_pp21995" pos="0.035 0.002 0.000927515"/>
               <site name="m_tibia_marker" pos="0 0 0" size="0.01" group="4" rgba="1 0.1 0.5 0.5"/>
               <body name="LFTarsus1" pos="0.01915 -0.01293 -0.51">
                 <inertial pos="-0.00414801 -0.00898333 -0.116831" mass="1.19008e-06" diaginertia="6.25046e-09 6.09661e-09 1.04328e-09"/>
@@ -449,15 +416,15 @@
   </equality>
 
   <actuator>
-    <motor name="mot_LFCoxa_roll" joint="joint_LFCoxa_roll" ctrlrange="-0.1 0.1" gear="0.5"></motor>
     <motor name="mot_LFCoxa_yaw" joint="joint_LFCoxa_yaw" ctrlrange="-0.25 0.25" gear="0.5"></motor>
     <motor name="mot_LFCoxa_pitch" joint="joint_LFCoxa_pitch" ctrlrange="-0.6 0.6" gear="0.5"></motor>
-    <motor name="mot_LFTrochanter_roll" joint="joint_LFTrochanter_roll" ctrlrange="-0.1 0.1" gear="0.5"></motor>
+    <motor name="mot_LFCoxa_roll" joint="joint_LFCoxa_roll" ctrlrange="-0.1 0.1" gear="0.5"></motor>
     <motor name="mot_LFTrochanter_yaw" joint="joint_LFTrochanter_yaw" ctrlrange="-0.25 0.05" gear="0.5"></motor>
     <motor name="mot_LFTrochanter_pitch" joint="joint_LFTrochanter_pitch" ctrlrange="-1 1" gear="0.5"></motor>
+    <motor name="mot_LFTrochanter_roll" joint="joint_LFTrochanter_roll" ctrlrange="-0.1 0.1" gear="0.5"></motor>
     <motor name="mot_LFTibia_pitch" joint="joint_LFTibia_pitch" ctrlrange="-0.6 0.6" gear="0.5"></motor>
   </actuator>
   <keyframe>
-    <key name="default-pose" qpos="0.1745 0.4357 0.2614 -0.4081 -2.388 0.1702 1.862 0 0 0 0 0 0 0"/>
+    <key name="default-pose" qpos="-0.11 0.35 0.5 -0.1 -2.8 0 2 0 0 0 0 0 0 0"/>
   </keyframe>
 </mujoco>
