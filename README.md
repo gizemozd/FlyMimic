@@ -100,13 +100,10 @@ FlyMimic/
 If you use flymimic in your research, please cite our paper:
 
 ```bibtex
-@misc{ozdil2025musculofly,
-      title={Musculoskeletal simulation of limb movement biomechanics in Drosophila melanogaster},
-      author={Pembe Gizem Özdil and Chuanfang Ning and Jasper S. Phelps and Sibo Wang-Chen and Guy Elisha and Alexander Blanke and Auke Ijspeert and Pavan Ramdya},
-      year={2025},
-      eprint={2509.06426},
-      archivePrefix={arXiv},
-      primaryClass={q-bio.NC},
-      url={https://arxiv.org/abs/2509.06426},
+@inproceedings{ozdil2026musculoskeletal,
+  title={Musculoskeletal simulation of limb movement biomechanics in Drosophila melanogaster},
+  author={Ozdil, Pembe Gizem and Ning, Chuanfang and Phelps, Jasper S and Wang-Chen, Sibo and Elisha, Guy and Ijspeert, Auke and Ramdya, Pavan},
+  booktitle={The Fourteenth International Conference on Learning Representations},
+  year={2026}
 }
 ```
