@@ -237,7 +237,6 @@ def evaluate_rollout(cfg: EvalConfig) -> Dict[str, Any]:
     # Validate inputs
     if not cfg.model_path.exists():
         raise FileNotFoundError(f"Model file not found: {cfg.model_path}")
-
     _ensure_dirs(cfg)
 
     if cfg.headless:

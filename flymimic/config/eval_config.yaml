@@ -3,7 +3,7 @@ defaults:
   - _self_
 
 # Paths
-model_path: "../logs/demo_model.zip"
+model_path: "../logs/model_stiffness_damping_armature.zip"
 videos_dir: "../results/videos"
 figures_dir: "../results/figures"
 data_dir: "../results/rollout_data"
